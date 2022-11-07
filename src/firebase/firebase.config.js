@@ -5,7 +5,7 @@ import { initializeApp } from "firebase/app";
 
 // Your web app's Firebase configuration
 const firebaseConfig = {
-  apiKey: "AIzaSyBRQVahPlBqgw1tkfzI8hzA37iIGBsK-gk",
+  apiKey: "AIzaSyBRQVahPlBqgw1tkfzI8hzA37iIGBsK-gk"
   authDomain: "mirpur-photography.firebaseapp.com",
   projectId: "mirpur-photography",
   storageBucket: "mirpur-photography.appspot.com",
