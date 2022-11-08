@@ -1,6 +1,8 @@
 import { createBrowserRouter } from "react-router-dom";
+import AddReview from "../AddReview/AddReview";
 import AllCatg from "../AllCatg/AllCatg";
 import Blog from "../Blog/Blog";
+import BuyItm from "../BuyItm/BuyItm";
 import Details from "../Details/Details";
 import Home from "../Home/Home";
 import Main from "../Main/Main";
@@ -24,8 +26,11 @@ export const router = createBrowserRouter([
       {
         path: "/detail/:id",
         element: <Details></Details>,
-        loader: ({ params }) => fetch(`http://localhost:5000/detail/${params.id}`),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/detail/${params.id}`),
       },
+      { path: "/buy", element: <BuyItm></BuyItm> },
+      {path:'/review',element:<AddReview></AddReview>}
     ],
   },
 ]);

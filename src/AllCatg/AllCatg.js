@@ -2,10 +2,16 @@ import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import toast from "react-hot-toast";
+import { Toast } from "react-bootstrap";
 
 const AllCatg = () => {
   const category = useLoaderData();
   //   console.log(category);
+
+  const clk = () => {
+    toast.success("Your purchase is processing");
+  };
 
   return (
     <div
@@ -25,12 +31,19 @@ const AllCatg = () => {
                 ? ctg.description
                 : ctg.description.slice(0, 125) + "....."}
             </Card.Text>
+            <Button className="mb-4" variant="secondary">
+              Price:{ctg.view}
+            </Button>
             <Link
               className="d-flex justify-content-between"
               to={`/detail/${ctg._id}`}
             >
               <Button variant="primary">see details</Button>
-              <Button variant="primary">Buy Now</Button>
+              <Link to="/buy">
+                <Button onClick={() => clk()} variant="primary">
+                  Buy Now
+                </Button>
+              </Link>
             </Link>
           </Card.Body>
         </Card>

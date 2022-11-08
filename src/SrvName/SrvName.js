@@ -18,12 +18,13 @@ const SrvName = ({ item }) => {
               ? description
               : description.slice(0, 125) + "....."}
           </Card.Text>
+          <Button className="mb-4" variant="secondary">Price:{view}</Button>
           <Link
             className="d-flex justify-content-between"
             to={`/detail/${_id}`}
           >
-            <Button variant="primary">see details</Button>
-            <Button variant="primary">Buy Now</Button>
+            <Button  variant="primary">see details</Button>
+            <Link to='/buy'><Button variant="primary">Buy Now</Button></Link>
           </Link>
         </Card.Body>
       </Card>

@@ -57,9 +57,11 @@ const Home = () => {
           <SrvName key={item._id} item={item}></SrvName>
         ))}
       </div>
+      
       <div className="d-flex justify-content-end">
         <Link to="/allcatg">
-          <Button> all categories</Button>
+          <Button> see all</Button>
+          <br />
         </Link>
       </div>
     </div>
