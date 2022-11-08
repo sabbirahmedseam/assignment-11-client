@@ -54,7 +54,7 @@ const Home = () => {
       </div>
       <div className="items">
         {items.map((item) => (
-          <SrvName key={item._key} item={item}></SrvName>
+          <SrvName key={item._id} item={item}></SrvName>
         ))}
       </div>
       <div className="d-flex justify-content-end">

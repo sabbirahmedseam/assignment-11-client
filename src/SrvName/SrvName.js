@@ -1,10 +1,12 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
+import { Link } from "react-router-dom";
 import "./SrvName.css";
 
 const SrvName = ({ item }) => {
   console.log(item);
-  const {description,img,title,view,star}=item;
+  const {_id,description,img,title,view,star}=item;
+  
   return (
     <div>
       <Card variant="top">
@@ -14,7 +16,7 @@ const SrvName = ({ item }) => {
           <Card.Text style={{textAlign:'justify'}}>
             {description.length<200?description:description.slice(0,125)+"....."}
           </Card.Text>
-          <Button variant="primary">see details</Button>
+         <Link to={`/detail/${_id}`}> <Button variant="primary">see details</Button></Link>
         </Card.Body>
       </Card>
     </div>
