@@ -1,12 +1,17 @@
-.div{
-    
-    margin:20px 0;
+.div {
+  margin: 20px 0;
 }
 
-.part{
-    display: grid;
-    grid-template-columns: repeat(2,1fr);
+.part {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
 }
-.part img{
-    width: 50%;
+.part img {
+  width: 50%;
+}
+
+.items {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  gap:15px;
 }

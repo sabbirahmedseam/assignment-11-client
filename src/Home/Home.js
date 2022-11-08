@@ -1,7 +1,12 @@
 import React from "react";
+import { Button } from "react-bootstrap";
+import { Link, useLoaderData } from "react-router-dom";
+import SrvName from "../SrvName/SrvName";
 import "./Home.css";
 
 const Home = () => {
+  const items = useLoaderData();
+
   return (
     <div className="div">
       <img
@@ -46,6 +51,16 @@ const Home = () => {
           been a history of people – artists and inventors who steered the field
           into the modern era
         </p>
+      </div>
+      <div className="items">
+        {items.map((item) => (
+          <SrvName key={item._key} item={item}></SrvName>
+        ))}
+      </div>
+      <div className="d-flex justify-content-end">
+        <Link to="/allcatg">
+          <Button> all categories</Button>
+        </Link>
       </div>
     </div>
   );
