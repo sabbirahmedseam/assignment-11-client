@@ -7,8 +7,8 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 const Login = () => {
   const location = useLocation();
   const navigate = useNavigate();
-  const from = location?.state?.from?.pathname || "/";
-
+  const from = location.state?.from?.pathname || "/";
+  console.log(from);
   const { logIn } = useContext(AuthContext);
   const handleSubmit = (event) => {
     event.preventDefault();
@@ -20,7 +20,8 @@ const Login = () => {
       .then((result) => {
         const user = result.user;
         console.log(user);
-        navigate(from, { replace: true });
+        // navigate(from, { replace: true });
+        navigate("/review");
       })
       .catch((err) => console.log(err));
   };
@@ -45,7 +46,7 @@ const Login = () => {
           />
         </Form.Group>
         <Button variant="primary" type="submit">
-          Logout
+          Login
         </Button>
       </Form>
     </div>
