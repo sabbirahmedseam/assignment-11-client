@@ -6,8 +6,9 @@ import { FaEye, FaStar } from "react-icons/fa";
 
 const Details = () => {
   const items = useLoaderData();
-  const { _id, description, img, title, view, star } = items;
-  //   console.log(items);
+  const { _id, service_id, description, img, title, view, star } = items;
+  console.log(items);
+  console.log(service_id);
   return (
     <div className="w-50 mx-auto">
       <Card variant="top">
@@ -17,7 +18,6 @@ const Details = () => {
           <Card.Text style={{ textAlign: "justify" }}>{description}</Card.Text>
           <div className="d-flex justify-content-between align-items-center">
             <b className="d-flex justify-content-between align-items-center gap-1">
-              {" "}
               <FaEye></FaEye> {view}
             </b>
 
@@ -30,7 +30,11 @@ const Details = () => {
             <Link to={`/allcatg`}>
               <Button variant="primary">Previous</Button>
             </Link>
-            <Link to="/review">
+            <Link to={`/seereview/${service_id}`}>
+              <Button variant="primary">See reviews</Button>
+            </Link>
+
+            <Link to={`/review/${_id}`}>
               <Button variant="primary">Add review</Button>
             </Link>
           </div>

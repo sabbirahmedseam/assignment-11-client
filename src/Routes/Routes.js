@@ -9,6 +9,7 @@ import Login from "../Login/Login";
 import Main from "../Main/Main";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Registration from "../Registration/Registration";
+import SeeReview from "../SeeReview/SeeReview";
 
 export const router = createBrowserRouter([
   {
@@ -37,15 +38,23 @@ export const router = createBrowserRouter([
       },
       { path: "/buy", element: <BuyItm></BuyItm> },
       {
-        path: "/review",
+        path: "/review/:id",
         element: (
           <PrivateRoute>
             <AddReview></AddReview>
           </PrivateRoute>
         ),
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/detail/${params.id}`),
       },
       { path: "/login", element: <Login></Login> },
       { path: "/register", element: <Registration></Registration> },
+      {
+        path: "/seereview/:id",
+        element: <SeeReview></SeeReview>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/orders/${params.id}`),
+      },
     ],
   },
 ]);
