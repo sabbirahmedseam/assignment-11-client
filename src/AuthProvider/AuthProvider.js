@@ -23,6 +23,7 @@ const AuthProvider = ({ children }) => {
     return createUserWithEmailAndPassword(auth, email, password);
   };
   const logIn = (email, password) => {
+    setLoading(true);
     return signInWithEmailAndPassword(auth, email, password);
   };
 
@@ -32,8 +33,8 @@ const AuthProvider = ({ children }) => {
 
   useEffect(() => {
     const unsubscribe = onAuthStateChanged(auth, (currentUser) => {
-        setUser(currentUser);
-        setLoading(false);
+      setUser(currentUser);
+      setLoading(false);
     });
     return () => {
       unsubscribe();
@@ -41,7 +42,7 @@ const AuthProvider = ({ children }) => {
   }, []);
   console.log(user);
 
-  const authInfo = { loading,user, googleSignIn, signInPass, logOut, logIn };
+  const authInfo = { loading, user, googleSignIn, signInPass, logOut, logIn };
   return (
     <div>
       <AuthContext.Provider value={authInfo}>{children}</AuthContext.Provider>
