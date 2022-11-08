@@ -5,7 +5,9 @@ import Blog from "../Blog/Blog";
 import BuyItm from "../BuyItm/BuyItm";
 import Details from "../Details/Details";
 import Home from "../Home/Home";
+import Login from "../Login/Login";
 import Main from "../Main/Main";
+import Registration from "../Registration/Registration";
 
 export const router = createBrowserRouter([
   {
@@ -30,7 +32,9 @@ export const router = createBrowserRouter([
           fetch(`http://localhost:5000/detail/${params.id}`),
       },
       { path: "/buy", element: <BuyItm></BuyItm> },
-      {path:'/review',element:<AddReview></AddReview>}
+      { path: "/review", element: <AddReview></AddReview> },
+      { path: "/login", element: <Login></Login> },
+      { path: "/register", element: <Registration></Registration> },
     ],
   },
 ]);
