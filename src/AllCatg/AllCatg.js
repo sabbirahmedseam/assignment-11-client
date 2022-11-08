@@ -5,7 +5,7 @@ import Card from "react-bootstrap/Card";
 
 const AllCatg = () => {
   const category = useLoaderData();
-//   console.log(category);
+  //   console.log(category);
 
   return (
     <div
@@ -25,8 +25,12 @@ const AllCatg = () => {
                 ? ctg.description
                 : ctg.description.slice(0, 125) + "....."}
             </Card.Text>
-            <Link to={`/detail/${ctg._id}`}>
+            <Link
+              className="d-flex justify-content-between"
+              to={`/detail/${ctg._id}`}
+            >
               <Button variant="primary">see details</Button>
+              <Button variant="primary">Buy Now</Button>
             </Link>
           </Card.Body>
         </Card>
