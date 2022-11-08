@@ -2,7 +2,7 @@ import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import {  FaEye, FaStar } from "react-icons/fa";
+import { FaEye, FaStar } from "react-icons/fa";
 
 const Details = () => {
   const items = useLoaderData();
@@ -30,7 +30,9 @@ const Details = () => {
             <Link to={`/allcatg`}>
               <Button variant="primary">Previous</Button>
             </Link>
-            <Button variant="primary">Add review</Button>
+            <Link to="/review">
+              <Button variant="primary">Add review</Button>
+            </Link>
           </div>
         </Card.Body>
       </Card>
