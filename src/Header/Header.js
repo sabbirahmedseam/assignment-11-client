@@ -24,6 +24,8 @@ const Header = () => {
           <Link to="/register">Registration</Link>
           <Link to="/login">Login</Link>
           <Link to="/summary">Summary</Link>
+          <Link to="/update">Review</Link>
+
         </Nav>
         <Button onClick={() => handleOut()}>LogOut</Button>
       </Navbar>

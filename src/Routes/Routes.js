@@ -11,6 +11,7 @@ import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Registration from "../Registration/Registration";
 import SeeReview from "../SeeReview/SeeReview";
 import Summary from "../Summary/Summary";
+import UpdateReview from "../UpdateReview/UpdateReview";
 
 export const router = createBrowserRouter([
   {
@@ -62,6 +63,7 @@ export const router = createBrowserRouter([
           fetch(`http://localhost:5000/orders/${params.id}`),
       },
       { path: "/summary", element: <Summary></Summary> },
+      {path:'/update',element:<UpdateReview></UpdateReview>}
     ],
   },
 ]);
