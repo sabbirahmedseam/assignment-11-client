@@ -1,9 +1,9 @@
-.footer{
-    background-color: black;
-    padding: 50px;
-    color: white;
-    text-align:center;
+.footer {
+  background-color: black;
+  padding: 150px;
+  color: white;
+  text-align: center;
 }
-.bold:hover{
-    cursor: pointer;
+.bold:hover {
+  cursor: pointer;
 }

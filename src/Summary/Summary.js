@@ -39,22 +39,26 @@ const Summary = () => {
   };
 
   return (
-    <div>
-      summmmmamasf
-      <h1>{orders.length}</h1>
-      <h1>total purchase {items.length}</h1>
-      {items?.map((item) => (
-        <div key={item._id} className="d-flex mb-3">
-          <p>{item?.email}</p>
-          <img
-            src={item.img}
-            style={{ height: "50px", width: "50px" }}
-            alt=""
-          />
-          <p>{item.title}</p>
-          <button onClick={() => handleDlt(item._id)}>X</button>
-        </div>
-      ))}
+    <div className="d-flex justify-content-around">
+      <div>
+        <h1>total purchase {items.length}</h1>
+        {items?.map((item) => (
+          <div key={item._id} className="d-flex mb-3">
+            <p>{item?.email}</p>
+            <img
+              src={item.img}
+              style={{ height: "50px", width: "50px" }}
+              alt=""
+            />
+            <p>{item.title}</p>
+            <button onClick={() => handleDlt(item._id)}>X</button>
+          </div>
+        ))}
+      </div>
+      <div>
+        
+        <h1>Review:{orders.length}</h1>
+      </div>
     </div>
   );
 };
