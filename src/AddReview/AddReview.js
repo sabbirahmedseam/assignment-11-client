@@ -7,9 +7,10 @@ import { useLoaderData } from "react-router-dom";
 const AddReview = () => {
   const { user } = useContext(AuthContext);
   const items = useLoaderData();
-  const { title, service_id } = items;
+  const { title, service_id, img } = items;
   console.log(items);
-//   console.log(title, _id);
+  console.log(img);
+  //   console.log(title, _id);
   //   console.log(user);
   console.log(user.email);
 
@@ -21,7 +22,8 @@ const AddReview = () => {
       email,
       message,
       title,
-      service_id
+      service_id,
+      img,
     };
     console.log(orders);
     fetch("http://localhost:5000/orders", {

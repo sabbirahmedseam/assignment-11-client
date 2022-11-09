@@ -10,6 +10,7 @@ import Main from "../Main/Main";
 import PrivateRoute from "../PrivateRoute/PrivateRoute";
 import Registration from "../Registration/Registration";
 import SeeReview from "../SeeReview/SeeReview";
+import Summary from "../Summary/Summary";
 
 export const router = createBrowserRouter([
   {
@@ -36,7 +37,12 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/detail/${params.id}`),
       },
-      { path: "/buy", element: <BuyItm></BuyItm> },
+      {
+        path: "/buy/:id",
+        element: <BuyItm></BuyItm>,
+        loader: ({ params }) =>
+          fetch(`http://localhost:5000/detail/${params.id}`),
+      },
       {
         path: "/review/:id",
         element: (
@@ -55,6 +61,7 @@ export const router = createBrowserRouter([
         loader: ({ params }) =>
           fetch(`http://localhost:5000/orders/${params.id}`),
       },
+      { path: "/summary", element: <Summary></Summary> },
     ],
   },
 ]);

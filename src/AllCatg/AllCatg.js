@@ -7,10 +7,12 @@ import { Toast } from "react-bootstrap";
 
 const AllCatg = () => {
   const category = useLoaderData();
-  //   console.log(category);
+  console.log(category);
 
-  const clk = () => {
+  const clk = (id) => {
     toast.success("Your purchase is processing");
+    // console.log(id);
+    
   };
 
   return (
@@ -39,7 +41,7 @@ const AllCatg = () => {
               to={`/detail/${ctg._id}`}
             >
               <Button variant="primary">see details</Button>
-              <Link to="/buy">
+              <Link to={`/buy/${ctg._id}`}>
                 <Button onClick={() => clk()} variant="primary">
                   Buy Now
                 </Button>

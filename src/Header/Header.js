@@ -21,11 +21,13 @@ const Header = () => {
         <Nav className="me-auto">
           <Link to="/">Home</Link>
           <Link to="/blog">Blog</Link>
+          <Link to="/register">Registration</Link>
+          <Link to="/login">Login</Link>
+          <Link to="/summary">Summary</Link>
         </Nav>
         <Button onClick={() => handleOut()}>LogOut</Button>
       </Navbar>
     </div>
   );
 };
-
 export default Header;

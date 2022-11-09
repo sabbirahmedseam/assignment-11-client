@@ -1,10 +1,13 @@
-import React from "react";
+import React, { useContext } from "react";
 import { useLoaderData } from "react-router-dom";
 import Col from "react-bootstrap/Col";
 import Form from "react-bootstrap/Form";
 import Row from "react-bootstrap/Row";
+import { AuthContext } from "../AuthProvider/AuthProvider";
 
 const SeeReview = () => {
+  const { user } = useContext(AuthContext);
+  console.log(user.photoURL);
   const items = useLoaderData();
   console.log(items);
 
@@ -13,6 +16,7 @@ const SeeReview = () => {
       <h1>This item has {items.length} review</h1>
       {items.map((item) => (
         <Form className="mb-5">
+          <img src={user.photoURL} alt="" />
           <Row>
             <Col>
               <Form.Control

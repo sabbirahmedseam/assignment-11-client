@@ -31,10 +31,11 @@ const SrvName = ({ item }) => {
             to={`/detail/${_id}`}
           >
             <Button variant="primary">see details</Button>
-            <Link to="">
-              <Button onClick={() => clk()} variant="primary">
+            <Link to="/allcatg">
+              {/* <Button onClick={() => clk()} variant="primary">
                 Buy Now
-              </Button>
+              </Button> */}
+              <Button variant="primary">All ctg page</Button>
             </Link>
           </Link>
         </Card.Body>
