@@ -19,7 +19,7 @@ const Header = () => {
       <Navbar collapseOnSelect bg="dark" variant="dark">
         <Navbar.Brand href="#home">React-Bootstrap</Navbar.Brand>
         <Nav className="me-auto">
-          <Link>Home</Link>
+          <Link to="/">Home</Link>
           <Link to="/blog">Blog</Link>
         </Nav>
         <Button onClick={() => handleOut()}>LogOut</Button>
