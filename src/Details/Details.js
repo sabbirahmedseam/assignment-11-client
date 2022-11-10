@@ -3,14 +3,14 @@ import { Link, useLoaderData } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
 import { FaEye, FaStar } from "react-icons/fa";
+import useTitle from "../Hooks/useTitle";
 
 const Details = () => {
   const items = useLoaderData();
+  useTitle("review");
   const { _id, service_id, description, img, title, view, star } = items;
-  console.log(items);
-  console.log(service_id);
   return (
-    <div className="w-50 mx-auto">
+    <div className="w-50 mx-auto my-3">
       <Card variant="top">
         <Card.Img src={img} style={{ width: "100%", height: "265px" }} />
         <Card.Body>
@@ -22,7 +22,7 @@ const Details = () => {
             </b>
 
             <b className="d-flex justify-content-between align-items-center gap-1">
-              <FaStar></FaStar>
+              <FaStar className="text-warning"></FaStar>
               {star}
             </b>
           </div>

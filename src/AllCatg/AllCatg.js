@@ -2,18 +2,13 @@ import React from "react";
 import { Link, useLoaderData } from "react-router-dom";
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import toast from "react-hot-toast";
-import { Toast } from "react-bootstrap";
+
+import useTitle from "../Hooks/useTitle";
 
 const AllCatg = () => {
   const category = useLoaderData();
-  console.log(category);
 
-  const clk = (id) => {
-    toast.success("Your purchase is processing");
-    // console.log(id);
-    
-  };
+  useTitle("allcategory");
 
   return (
     <div
@@ -21,6 +16,7 @@ const AllCatg = () => {
         display: "grid",
         gridTemplateColumns: "repeat(3,1fr)",
         gap: "20px",
+        margin: "10px 0",
       }}
     >
       {category.map((ctg) => (
@@ -31,10 +27,10 @@ const AllCatg = () => {
             <Card.Text style={{ textAlign: "justify" }}>
               {ctg.description.length < 200
                 ? ctg.description
-                : ctg.description.slice(0, 125) + "....."}
+                : ctg.description.slice(0, 100) + "....."}
             </Card.Text>
             <Button className="mb-4" variant="secondary">
-              Price:{ctg.view}
+              Price:{ctg.view}$
             </Button>
             <Link
               className="d-flex justify-content-between"
@@ -42,9 +38,7 @@ const AllCatg = () => {
             >
               <Button variant="primary">see details</Button>
               <Link to={`/buy/${ctg._id}`}>
-                <Button onClick={() => clk()} variant="primary">
-                  Buy Now
-                </Button>
+                <Button variant="primary">Buy Now</Button>
               </Link>
             </Link>
           </Card.Body>

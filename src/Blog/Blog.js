@@ -1,7 +1,9 @@
 import React from "react";
 import { Container } from "react-bootstrap";
+import useTitle from "../Hooks/useTitle";
 
 const Blog = () => {
+  useTitle('blog');
   return (
     <Container style={{textAlign:'justify'}}>
       <b>Difference between sql and nosql:</b>

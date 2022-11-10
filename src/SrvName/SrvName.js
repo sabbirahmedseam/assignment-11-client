@@ -1,21 +1,25 @@
 import Button from "react-bootstrap/Button";
 import Card from "react-bootstrap/Card";
-import toast from "react-hot-toast";
 import { Link } from "react-router-dom";
+import useTitle from "../Hooks/useTitle";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
+
 import "./SrvName.css";
-
 const SrvName = ({ item }) => {
-  console.log(item);
-  const { _id, description, img, title, view, star } = item;
-
-  const clk = () => {
-    toast.success("Your purchase is processing");
-  };
+  useTitle("service-name");
+  const { _id, description, img, title, view } = item;
+  useTitle("service");
 
   return (
     <div>
       <Card variant="top">
-        <Card.Img src={img} style={{ width: "100%", height: "265px" }} />
+        <PhotoProvider>
+          <PhotoView>
+            <Card.Img src={img} style={{ width: "100%", height: "265px" }} />
+          </PhotoView>
+        </PhotoProvider>
+
         <Card.Body>
           <Card.Title>{title}</Card.Title>
           <Card.Text style={{ textAlign: "justify" }}>
@@ -32,10 +36,7 @@ const SrvName = ({ item }) => {
           >
             <Button variant="primary">see details</Button>
             <Link to="/allcatg">
-              {/* <Button onClick={() => clk()} variant="primary">
-                Buy Now
-              </Button> */}
-              <Button variant="primary">All ctg page</Button>
+              <Button variant="primary">All items </Button>
             </Link>
           </Link>
         </Card.Body>

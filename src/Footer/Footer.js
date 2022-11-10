@@ -1,7 +1,9 @@
 import React from "react";
+import useTitle from "../Hooks/useTitle";
 import "./Footer.css";
 
 const Footer = () => {
+  useTitle("footer");
   return (
     <div className="footer">
       <div className="w-50 mx-auto">
@@ -12,7 +14,7 @@ const Footer = () => {
           <b className="bold">Github</b>
         </div>
       </div>
-      <p> &copy;  copyright &#8594;2015</p>
+      <p> &copy; copyright &#8594;2015</p>
     </div>
   );
 };

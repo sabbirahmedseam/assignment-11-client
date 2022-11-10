@@ -3,27 +3,28 @@ import { useLoaderData } from "react-router-dom";
 import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import toast from "react-hot-toast";
+import useTitle from "../Hooks/useTitle";
 
 const BuyItm = () => {
   const item = useLoaderData();
+  useTitle("additem");
   const { user } = useContext(AuthContext);
 
   const { _id, img, title, service_id, view } = item;
-  console.log(item);
 
   const hndlRvw = (event) => {
     event.preventDefault();
     const email = event.target.email.value;
-
+    toast.success("purchase is processing");
     const orders = {
       email,
       title,
-     
+
       service_id,
       img,
     };
-    console.log(orders);
-    fetch("http://localhost:5000/review", {
+    fetch("https://mirpur-photography-server.vercel.app/review", {
       method: "POST",
       headers: {
         "content-type": "application/json",

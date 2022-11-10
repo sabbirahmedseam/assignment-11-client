@@ -3,10 +3,13 @@ import { Button } from "react-bootstrap";
 import { Link, useLoaderData } from "react-router-dom";
 import SrvName from "../SrvName/SrvName";
 import "./Home.css";
+import { PhotoProvider, PhotoView } from "react-photo-view";
+import "react-photo-view/dist/react-photo-view.css";
+import useTitle from "../Hooks/useTitle";
 
 const Home = () => {
   const items = useLoaderData();
-
+  useTitle("home");
   return (
     <div className="div">
       <img
@@ -14,7 +17,7 @@ const Home = () => {
         src="https://wallpapercave.com/wp/wp1933135.jpg"
         alt=""
       />
-      <div className="part">
+      <div className="part mt-3 mb-3">
         <p>
           Color photography started to become popular and accessible with the
           release of Eastman Kodak’s “Kodachrome” film in the 1930s. Before
@@ -33,6 +36,7 @@ const Home = () => {
           src="https://images.unsplash.com/file-1662566326028-7013d2f857a6image?dpr=2&auto=format&fit=crop&w=416&q=60"
           alt=""
         />
+
         <img
           src="https://images.unsplash.com/photo-1553880376-2dec478c8e3b?ixlib=rb-4.0.3&ixid=MnwxMjA3fDB8MHxleHBsb3JlLWZlZWR8Mzh8fHxlbnwwfHx8fA%3D%3D&auto=format&fit=crop&w=400&q=60"
           alt=""
@@ -57,10 +61,10 @@ const Home = () => {
           <SrvName key={item._id} item={item}></SrvName>
         ))}
       </div>
-      
-      <div className="d-flex justify-content-end">
+
+      <div className="d-flex justify-content-end mt-1">
         <Link to="/allcatg">
-          <Button> see all</Button>
+          <Button> see all category &#8594;</Button>
           <br />
         </Link>
       </div>

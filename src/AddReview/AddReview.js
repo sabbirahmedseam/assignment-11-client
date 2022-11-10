@@ -3,21 +3,22 @@ import { AuthContext } from "../AuthProvider/AuthProvider";
 import Form from "react-bootstrap/Form";
 import { Button } from "react-bootstrap";
 import { useLoaderData } from "react-router-dom";
+import toast from "react-hot-toast";
+import useTitle from "../Hooks/useTitle";
 
 const AddReview = () => {
   const { user } = useContext(AuthContext);
   const items = useLoaderData();
+  useTitle("addreview");
   const { title, service_id, img } = items;
-  console.log(items);
-  console.log(img);
-  //   console.log(title, _id);
-  //   console.log(user);
-  console.log(user.email);
 
   const hndlRvw = (event) => {
     event.preventDefault();
-    const email = event.target.email.value;
-    const message = event.target.message.value;
+    const form = event.target;
+    const email = form.email.value;
+    const message = form.message.value;
+    toast.success("Review submit successfully");
+    form.reset();
     const orders = {
       email,
       message,
@@ -25,8 +26,7 @@ const AddReview = () => {
       service_id,
       img,
     };
-    console.log(orders);
-    fetch("http://localhost:5000/orders", {
+    fetch("https://mirpur-photography-server.vercel.app/orders", {
       method: "POST",
       headers: {
         "content-type": "application/json",
@@ -36,7 +36,7 @@ const AddReview = () => {
   };
 
   return (
-    <Form className="w-50 mx-auto" onSubmit={hndlRvw}>
+    <Form className="w-50 mx-auto my-3" onSubmit={hndlRvw}>
       <Form.Group className="mb-3" controlId="exampleForm.ControlInput1">
         <Form.Label>Email address</Form.Label>
         <Form.Control

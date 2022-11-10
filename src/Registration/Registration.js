@@ -1,11 +1,17 @@
 import { GoogleAuthProvider } from "firebase/auth";
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import Button from "react-bootstrap/Button";
 import Form from "react-bootstrap/Form";
+import toast from "react-hot-toast";
+import { Link, useNavigate } from "react-router-dom";
 import { AuthContext } from "../AuthProvider/AuthProvider";
+import useTitle from "../Hooks/useTitle";
 
 const Registration = () => {
-  const { googleSignIn, signInPass } = useContext(AuthContext);
+  useTitle("registration");
+  const navigate = useNavigate();
+  const [error, setError] = useState("");
+  const { googleSignIn, signInPass, updateUser } = useContext(AuthContext);
   const googleProvider = new GoogleAuthProvider();
 
   const handleSubmit = (event) => {
@@ -15,27 +21,34 @@ const Registration = () => {
     const photo = form.photo.value;
     const email = form.email.value;
     const password = form.password.value;
-
-    console.log(name, photo, email, password);
+    const profile = {
+      displayName: name,
+      photoURL: photo,
+    };
+    form.reset();
     signInPass(email, password)
       .then((result) => {
+        toast.success("sign in successful");
+        navigate("/");
+
         const user = result.user;
-        console.log(user);
+        updateUser(profile);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => setError(err.message));
   };
 
   const hndleGgl = () => {
     googleSignIn(googleProvider)
       .then((result) => {
+        toast.success("sign in successfully");
+        navigate("/");
         const user = result.user;
-        console.log(user);
       })
-      .catch((err) => console.log(err));
+      .catch((err) => setError(err.message));
   };
 
   return (
-    <div className="w-50 mx-auto mb-5">
+    <div className="w-50 mx-auto my-5">
       <Form onSubmit={handleSubmit}>
         <Form.Group className="mb-3" controlId="formBasicEmail">
           <Form.Label>Name</Form.Label>
@@ -56,7 +69,6 @@ const Registration = () => {
             We'll never share your email with anyone else.
           </Form.Text>
         </Form.Group>
-
         <Form.Group className="mb-3" controlId="formBasicPassword">
           <Form.Label>Password</Form.Label>
           <Form.Control
@@ -65,12 +77,13 @@ const Registration = () => {
             placeholder="Password"
           />
         </Form.Group>
-        <Form.Group className="mb-3" controlId="formBasicCheckbox">
-          <Form.Check type="checkbox" label="Check me out" />
-        </Form.Group>
+        <p className="text-danger">{error}</p>
         <Button variant="primary" type="submit">
           Registration
         </Button>
+        <span>
+          Already have an account <Link to="/login">Login</Link>
+        </span>
       </Form>
       <br />
       <Button onClick={() => hndleGgl()} variant="primary" type="submit">

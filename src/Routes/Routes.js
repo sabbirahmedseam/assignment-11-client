@@ -3,6 +3,7 @@ import AddReview from "../AddReview/AddReview";
 import AllCatg from "../AllCatg/AllCatg";
 import Blog from "../Blog/Blog";
 import BuyItm from "../BuyItm/BuyItm";
+import ChangeReview from "../ChangeReview/ChangeReview";
 import Details from "../Details/Details";
 import Home from "../Home/Home";
 import Login from "../Login/Login";
@@ -21,7 +22,8 @@ export const router = createBrowserRouter([
       {
         path: "/",
         element: <Home></Home>,
-        loader: () => fetch("http://localhost:5000/items"),
+        loader: () =>
+          fetch("https://mirpur-photography-server.vercel.app/items"),
       },
       {
         path: "/blog",
@@ -30,19 +32,28 @@ export const router = createBrowserRouter([
       {
         path: "/allcatg",
         element: <AllCatg></AllCatg>,
-        loader: () => fetch("http://localhost:5000/allcatg"),
+        loader: () =>
+          fetch("https://mirpur-photography-server.vercel.app/allcatg"),
       },
       {
         path: "/detail/:id",
         element: <Details></Details>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/detail/${params.id}`),
+          fetch(
+            `https://mirpur-photography-server.vercel.app/detail/${params.id}`
+          ),
       },
       {
         path: "/buy/:id",
-        element: <BuyItm></BuyItm>,
+        element: (
+          <PrivateRoute>
+            <BuyItm></BuyItm>
+          </PrivateRoute>
+        ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/detail/${params.id}`),
+          fetch(
+            `https://mirpur-photography-server.vercel.app/detail/${params.id}`
+          ),
       },
       {
         path: "/review/:id",
@@ -52,7 +63,9 @@ export const router = createBrowserRouter([
           </PrivateRoute>
         ),
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/detail/${params.id}`),
+          fetch(
+            `https://mirpur-photography-server.vercel.app/detail/${params.id}`
+          ),
       },
       { path: "/login", element: <Login></Login> },
       { path: "/register", element: <Registration></Registration> },
@@ -60,10 +73,20 @@ export const router = createBrowserRouter([
         path: "/seereview/:id",
         element: <SeeReview></SeeReview>,
         loader: ({ params }) =>
-          fetch(`http://localhost:5000/orders/${params.id}`),
+          fetch(
+            `https://mirpur-photography-server.vercel.app/orders/${params.id}`
+          ),
       },
       { path: "/summary", element: <Summary></Summary> },
-      {path:'/update',element:<UpdateReview></UpdateReview>}
+      { path: "/update", element: <UpdateReview></UpdateReview> },
+      {
+        path: "/change/:id",
+        element: <ChangeReview></ChangeReview>,
+        loader: ({ params }) =>
+          fetch(
+            `https://mirpur-photography-server.vercel.app/order/${params.id}`
+          ),
+      },
     ],
   },
 ]);
